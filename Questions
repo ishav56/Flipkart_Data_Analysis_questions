@@ -1,0 +1,29 @@
+List the top 10 products with the highest retail price.
+
+Find the average discount percentage offered across all products.
+
+Display the count of products for each brand.
+
+Identify the product with the highest number of ratings.
+
+Show all products that have a discounted price less than 50% of their retail price.
+
+Group products by category and show the average rating in each.
+
+Display the most common product category and the number of products it contains.
+
+Rank products within each brand based on their overall rating using window functions.
+
+Find the latest crawl timestamp for each product and display the most recent 5.
+
+Join the product table with a brand details table (assume one exists) to show brand descriptions for top-rated products.
+
+For each product, calculate the difference between retail price and discounted price and rank them by discount amount.
+
+Find products that are offered by Flipkart Advantage and have a rating greater than 4.
+
+Determine the number of products added to the catalog each month.
+
+List products whose description includes the word "Cotton".
+
+Find duplicate product names and count how many times they appear.
