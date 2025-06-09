@@ -1,0 +1,117 @@
+create database Flipkart_data;
+
+use Flipkart_data;
+
+
+SELECT * FROM `flipkart_com-ecommerce_sample`;
+
+alter table `flipkart_com-ecommerce_sample` rename to flipkart_data;
+
+select * from flipkart_data;
+
+-- Q-1
+-- List the top 10 products with the highest retail price.
+
+-- select product_name,retail_price from flipkart_data order by retail_price desc limit 10;
+
+-- Q-2
+-- select product_name,avg(discounted_price) as avg_discount_price from flipkart_data
+-- group by product_name
+
+-- Q-3
+-- Display the count of products for each brand.
+
+-- select brand,count(product_name) from flipkart_data
+-- group by brand
+
+-- Q-4
+-- Identify the product with the highest number of ratings.
+
+-- select product_name,product_rating from flipkart_data order by product_rating desc ;
+
+-- Q-5
+-- Show all products that have a discounted price less than 50% of their retail price.
+
+-- select product_name from flipkart_data where discounted_price<0.5*RETAIL_PRICE;
+
+-- Q-6
+-- Group products by category and show the average rating in each.
+
+-- select product_category_tree,avg(product_rating) as avg_product_raing from flipkart_data
+-- group by product_category_tree order by avg_product_raing desc
+
+
+-- Q-7
+-- Display the most common product category and the number of products it contains.
+
+-- select product_category_tree as product_category,count(product_name) as product_count from flipkart_data
+-- group by  product_category order by product_count desc limit 1;
+
+-- Q-8
+-- Rank products within each brand based on their overall rating using window functions.
+
+-- select product_name,rank() over(partition by brand order by overall_rating desc ) as overall_rating from flipkart_data; 
+
+
+
+-- Q-9 Find the latest crawl timestamp for each product and display the most recent 5.
+
+-- using max
+-- select product_name,max(crawl_timestamp) as  latest_time_stamp from flipkart_data 
+-- group by  product_name order by latest_time_stamp  desc limit 5 ;
+
+-- Using Rank
+-- select product_name,crawl_timestamp ,
+-- rank() over(partition by product_name order by crawl_timestamp desc  ) as latest from flipkart_data   
+-- order by crawl_timestamp desc limit 5
+
+select * from flipkart_data;
+
+-- Q-10
+-- Join the product table with a brand details table (assume one exists) to show brand descriptions for top-rated products.
+
+-- select distinct e1.description,e2.brand from flipkart_data as e1 join flipkart_data as e2 on e1.brand=e2.brand
+-- where e1.product_rating =
+-- (select max(product_rating) from flipkart_data);
+
+
+-- Q-11 For each product, calculate the difference between retail price and discounted price and rank them by discount amount.
+
+-- select retail_price-discounted_price as discount_amount,rank() over(partition by product_name ) as rank_discount from flipkart_data order by discount_amount desc
+
+-- Q-12 Find products that are offered by Flipkart Advantage and have a rating greater than 4
+-- select product_name,is_FK_Advantage_product from flipkart_data where is_FK_Advantage_product="true" and product_rating>4
+
+
+
+
+-- Q-14 Determine the number of products added to the catalog each month.
+
+-- select count(*),date_format(crawl_timestamp ,"%y-%m") as order_by from flipkart_data
+-- group by DATE_FORMAT(crawl_timestamp, '%y-%m') order_by 
+
+-- Q-14 List products whose description includes the word "Cotton".
+
+-- select product_name from flipkart_data where description like "Cotton%"
+
+-- Q-15 Find duplicate product names and count how many times they appear.
+
+-- select count(*) as product_duplicate,product_name from flipkart_data
+-- group by product_name order  by  product_duplicate desc;
+
+select * from flipkart_data;
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
