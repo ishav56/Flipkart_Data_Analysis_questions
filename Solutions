@@ -85,7 +85,7 @@ select * from flipkart_data;
 
 
 
--- Q-14 Determine the number of products added to the catalog each month.
+-- Q-13 Determine the number of products added to the catalog each month.
 
 -- select count(*),date_format(crawl_timestamp ,"%y-%m") as order_by from flipkart_data
 -- group by DATE_FORMAT(crawl_timestamp, '%y-%m') order_by 
